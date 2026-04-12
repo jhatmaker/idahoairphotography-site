@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Idaho Air Photography | FAA Part 107 Certified Drone Services</title>
+<meta name="description" content="Professional aerial photography and videography across Idaho. FAA Part 107 certified. Real estate, agriculture, construction, events, and commercial services.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --pine: #1a2e1a;
+    --pine-mid: #2d4a2d;
+    --sage: #5a7a5a;
+    --sage-light: #8aaa7a;
+    --earth: #8b6914;
+    --earth-light: #c4952a;
+    --sky: #3a6b8a;
+    --sky-light: #6ba3c4;
+    --stone: #f4f1ec;
+    --stone-dark: #e0dbd0;
+    --bark: #2a1f12;
+    --cream: #faf8f4;
+    --white: #ffffff;
+    --text-muted: #7a7060;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--cream);
+    color: var(--bark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(26, 46, 26, 0.96);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 64px;
+    border-bottom: 1px solid rgba(138, 170, 122, 0.2);
+  }
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px; font-weight: 700; letter-spacing: 0.12em;
+    color: var(--earth-light); text-transform: uppercase;
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .nav-logo span { color: rgba(255,255,255,0.85); font-weight: 400; }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--earth-light); }
+  .nav-cta {
+    background: var(--earth-light); color: var(--pine) !important;
+    padding: 8px 20px; border-radius: 2px; font-weight: 700 !important;
+  }
+  .nav-cta:hover { background: #d4a030 !important; color: var(--pine) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background:
+      linear-gradient(to bottom, rgba(26,46,26,0.7) 0%, rgba(26,46,26,0.3) 50%, rgba(26,46,26,0.75) 100%),
+      url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=80') center/cover no-repeat;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 6rem 2rem 4rem;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--earth-light); margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: ''; display: block; width: 40px; height: 1px; background: var(--earth-light); opacity: 0.6;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 900; line-height: 1.0; color: white;
+    text-shadow: 0 2px 30px rgba(0,0,0,0.4);
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--earth-light); display: block;
+  }
+  .hero-sub {
+    font-size: 18px; font-weight: 300; color: rgba(255,255,255,0.85);
+    max-width: 540px; margin: 1.5rem auto 2.5rem; line-height: 1.65;
+  }
+  .hero-badges {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+  .badge {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.9); padding: 6px 16px; border-radius: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+    backdrop-filter: blur(4px);
+  }
+  .badge.gold { background: rgba(196,149,42,0.2); border-color: rgba(196,149,42,0.5); color: var(--earth-light); }
+  .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--earth-light); color: var(--pine);
+    padding: 14px 32px; border: none; border-radius: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none; display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #d4a030; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: white;
+    padding: 14px 32px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; text-decoration: none; display: inline-block;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
+  .hero-scroll {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    color: rgba(255,255,255,0.5);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 1px; height: 40px; background: rgba(255,255,255,0.3);
+    animation: scrollpulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollpulse {
+    0%,100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 0.7; transform: scaleY(1.3); }
+  }
+
+  /* SECTION SHARED */
+  section { padding: 5rem 2rem; }
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--earth); margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.15;
+    color: var(--pine); margin-bottom: 1rem;
+  }
+  .section-body { font-size: 17px; font-weight: 400; line-height: 1.7; color: var(--text-muted); max-width: 560px; }
+
+  /* SERVICES */
+  .services { background: var(--cream); }
+  .services-inner { max-width: 1100px; margin: 0 auto; }
+  .services-header { margin-bottom: 3rem; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5px;
+    background: var(--stone-dark); border: 1.5px solid var(--stone-dark); overflow: hidden;
+  }
+  .service-card {
+    background: var(--white); padding: 2.5rem 2rem;
+    transition: background 0.2s;
+  }
+  .service-card:hover { background: var(--stone); }
+  .service-icon {
+    width: 44px; height: 44px; margin-bottom: 1.25rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .service-icon svg { width: 36px; height: 36px; }
+  .service-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--pine); margin-bottom: 0.75rem;
+  }
+  .service-card p { font-size: 15px; line-height: 1.65; color: var(--text-muted); }
+
+  /* PORTFOLIO */
+  .portfolio { background: var(--pine); }
+  .portfolio .section-title { color: white; }
+  .portfolio .section-body { color: rgba(255,255,255,0.65); }
+  .portfolio-inner { max-width: 1100px; margin: 0 auto; }
+  .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem; }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 260px 200px;
+    gap: 3px;
+  }
+  .portfolio-item {
+    overflow: hidden; position: relative; background: var(--pine-mid);
+  }
+  .portfolio-item:first-child { grid-row: 1 / 3; }
+  .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; display: block; }
+  .portfolio-item:hover img { transform: scale(1.05); }
+  .portfolio-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,46,26,0.7) 0%, transparent 50%);
+    display: flex; align-items: flex-end; padding: 1rem 1.25rem;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+  .portfolio-overlay span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: white;
+  }
+
+  /* PRICING */
+  .pricing { background: var(--stone); }
+  .pricing-inner { max-width: 1000px; margin: 0 auto; }
+  .pricing-header { margin-bottom: 3rem; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5px; background: var(--stone-dark); border: 1.5px solid var(--stone-dark); }
+  .pricing-card {
+    background: var(--white); padding: 2.5rem 2rem; position: relative;
+  }
+  .pricing-card.featured { background: var(--pine); }
+  .pricing-card.featured h3 { color: white; }
+  .pricing-card.featured .price { color: var(--earth-light); }
+  .pricing-card.featured .price-desc { color: rgba(255,255,255,0.6); }
+  .pricing-card.featured .pricing-list li { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.1); }
+  .pricing-card.featured .pricing-list li::before { background: var(--sage-light); }
+  .pricing-tag {
+    position: absolute; top: 1.25rem; right: 1.25rem;
+    background: var(--earth-light); color: var(--pine);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 1px;
+  }
+  .pricing-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--sage); margin-bottom: 1rem;
+  }
+  .price { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 700; color: var(--pine); line-height: 1; }
+  .price sup { font-size: 20px; vertical-align: top; margin-top: 8px; }
+  .price-desc { font-size: 13px; color: var(--text-muted); margin: 0.5rem 0 1.5rem; }
+  .pricing-list { list-style: none; margin-bottom: 2rem; }
+  .pricing-list li {
+    font-size: 14px; color: var(--text-muted); padding: 8px 0;
+    border-bottom: 1px solid var(--stone-dark);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .pricing-list li::before {
+    content: ''; display: block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--sage); flex-shrink: 0;
+  }
+  .btn-book {
+    width: 100%; padding: 12px; border: 1.5px solid var(--pine); border-radius: 2px;
+    background: transparent; color: var(--pine);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s, color 0.2s;
+  }
+  .btn-book:hover { background: var(--pine); color: white; }
+  .btn-book.light { border-color: rgba(255,255,255,0.4); color: white; }
+  .btn-book.light:hover { background: rgba(255,255,255,0.15); }
+
+  /* ABOUT */
+  .about { background: var(--cream); }
+  .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-visual { position: relative; }
+  .about-img-wrap {
+    background:
+      linear-gradient(135deg, rgba(26,46,26,0.6), rgba(26,46,26,0.2)),
+      url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80') center/cover;
+    height: 460px; border-radius: 2px;
+  }
+  .about-cert {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    background: var(--pine); color: white;
+    padding: 1.5rem; border-radius: 2px; min-width: 180px;
+    border: 3px solid var(--earth-light);
+  }
+  .about-cert-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--earth-light); margin-bottom: 0.5rem;
+  }
+  .about-cert-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700; color: white; line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+  .about-cert-sub { font-size: 12px; color: rgba(255,255,255,0.6); }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+  .stat { padding: 1.25rem; border-left: 3px solid var(--earth-light); background: var(--stone); }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--pine); }
+  .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+  .gear-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--stone); border: 1px solid var(--stone-dark);
+    padding: 8px 14px; border-radius: 2px; margin-bottom: 1rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.06em; color: var(--pine);
+  }
+
+  /* CONTACT */
+  .contact { background: var(--pine); }
+  .contact .section-label { color: var(--earth-light); }
+  .contact .section-title { color: white; }
+  .contact .section-body { color: rgba(255,255,255,0.65); }
+  .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .form-field input, .form-field select, .form-field textarea {
+    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15);
+    color: white; padding: 12px 14px; border-radius: 2px;
+    font-family: 'Barlow', sans-serif; font-size: 15px;
+    outline: none; transition: border-color 0.2s;
+  }
+  .form-field input::placeholder, .form-field textarea::placeholder { color: rgba(255,255,255,0.3); }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--earth-light); }
+  .form-field select { color: rgba(255,255,255,0.7); }
+  .form-field select option { background: var(--pine); color: white; }
+  .form-field textarea { resize: vertical; min-height: 120px; }
+  .btn-submit {
+    background: var(--earth-light); color: var(--pine);
+    padding: 14px 32px; border: none; border-radius: 2px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; align-self: flex-start;
+    transition: background 0.2s;
+  }
+  .btn-submit:hover { background: #d4a030; }
+  .contact-info { padding-top: 0.5rem; }
+  .contact-info-item { display: flex; gap: 14px; align-items: flex-start; margin-bottom: 1.75rem; }
+  .contact-info-icon {
+    width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.2); border-radius: 2px;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    color: var(--earth-light); font-size: 18px;
+  }
+  .contact-info-text strong { display: block; color: white; font-size: 15px; font-weight: 500; margin-bottom: 2px; }
+  .contact-info-text span { color: rgba(255,255,255,0.55); font-size: 14px; }
+  .coverage-area {
+    margin-top: 2.5rem; padding: 1.5rem; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 2px;
+  }
+  .coverage-area h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--earth-light); margin-bottom: 1rem;
+  }
+  .coverage-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .coverage-tag {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.75); padding: 5px 12px; border-radius: 2px;
+    font-size: 13px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--bark); color: rgba(255,255,255,0.45);
+    padding: 2rem; text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; letter-spacing: 0.06em;
+  }
+  footer strong { color: var(--earth-light); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.25rem; }
+    .nav-links { display: none; }
+    .portfolio-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px 200px; }
+    .portfolio-item:first-child { grid-row: auto; grid-column: 1 / 3; }
+    .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .about-cert { position: static; margin-top: 1rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2L4 8v8l8 6 8-6V8L12 2z" stroke="#c4952a" stroke-width="1.5" fill="none"/>
+      <circle cx="12" cy="12" r="3" fill="#c4952a" opacity="0.8"/>
+    </svg>
+    Idaho Air <span>&nbsp;Photography</span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#about">About</a>
+    <a href="#contact" class="nav-cta">Book a Flight</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">FAA Part 107 Certified Drone Operator</div>
+  <h1>Idaho from<br><em>Above</em></h1>
+  <p class="hero-sub">Professional aerial photography and videography across the Gem State — for real estate, agriculture, construction, events, and beyond.</p>
+  <div class="hero-badges">
+    <span class="badge gold">FAA Part 107 Licensed</span>
+    <span class="badge">Real Estate</span>
+    <span class="badge">Agriculture</span>
+    <span class="badge">Construction</span>
+    <span class="badge">Events</span>
+  </div>
+  <div class="hero-buttons">
+    <a href="#contact" class="btn-primary">Request a Quote</a>
+    <a href="#portfolio" class="btn-outline">View Portfolio</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Aerial Services<br>Tailored to Your Needs</h2>
+      <p class="section-body">From sprawling farm acreage to mountain event venues, we capture Idaho from perspectives impossible from the ground.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 36 36" fill="none">
+            <rect x="3" y="8" width="30" height="22" rx="2" stroke="#2d4a2d" stroke-width="1.5"/>
+            <circle cx="18" cy="19" r="6" stroke="#c4952a" stroke-width="1.5"/>
+            <circle cx="18" cy="19" r="2.5" fill="#c4952a" opacity="0.5"/>
+            <rect x="14" y="5" width="8" height="4" rx="1" stroke="#2d4a2d" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Real Estate</h3>
+        <p>Stunning aerial stills and walkthrough videos that make listings stand out. Show the full property, neighborhood context, and surroundings buyers need to see.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 36 36" fill="none">
+            <path d="M4 28 C8 16 14 12 18 10 C22 8 26 12 32 20" stroke="#2d4a2d" stroke-width="1.5" fill="none"/>
+            <path d="M4 28 L10 22 L18 26 L26 18 L32 22" stroke="#c4952a" stroke-width="1.5" fill="none"/>
+            <circle cx="18" cy="18" r="12" stroke="#2d4a2d" stroke-width="1" stroke-dasharray="2 3" fill="none" opacity="0.4"/>
+          </svg>
+        </div>
+        <h3>Agriculture</h3>
+        <p>Crop monitoring, field mapping, and farm documentation. Get a bird's-eye view of field health, irrigation patterns, and seasonal progress.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 36 36" fill="none">
+            <rect x="5" y="18" width="10" height="14" stroke="#2d4a2d" stroke-width="1.5"/>
+            <rect x="17" y="12" width="10" height="20" stroke="#2d4a2d" stroke-width="1.5"/>
+            <rect x="29" y="8" width="2" height="24" stroke="#c4952a" stroke-width="1.5"/>
+            <path d="M2 32 H34" stroke="#2d4a2d" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Construction</h3>
+        <p>Site progress documentation, safety inspections, and as-built surveys. Regular flyovers keep clients and project managers informed at every phase.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 36 36" fill="none">
+            <path d="M18 5 L22 14 L32 15 L25 22 L27 32 L18 27 L9 32 L11 22 L4 15 L14 14 Z" stroke="#c4952a" stroke-width="1.5" fill="none"/>
+            <circle cx="18" cy="18" r="4" fill="#c4952a" opacity="0.3"/>
+          </svg>
+        </div>
+        <h3>Events &amp; Weddings</h3>
+        <p>Cinematic aerial coverage for weddings, festivals, rodeos, and private gatherings. Capture the full scale and energy of your special occasion.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 36 36" fill="none">
+            <path d="M6 28 L6 10 L18 6 L30 10 L30 28" stroke="#2d4a2d" stroke-width="1.5" fill="none"/>
+            <path d="M6 28 L30 28" stroke="#2d4a2d" stroke-width="1.5"/>
+            <path d="M12 20 L12 28" stroke="#c4952a" stroke-width="1.5"/>
+            <path d="M18 16 L18 28" stroke="#c4952a" stroke-width="1.5"/>
+            <path d="M24 20 L24 28" stroke="#c4952a" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <h3>Commercial</h3>
+        <p>Brand content, facility showcases, and marketing assets for businesses across Idaho. Elevate your visual presence with professional aerial imagery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-inner">
+    <div class="portfolio-header">
+      <div>
+        <div class="section-label" style="color: var(--earth-light);">Recent Work</div>
+        <h2 class="section-title">Idaho Through<br>the Lens</h2>
+      </div>
+      <p class="section-body" style="max-width:320px; text-align:right;">High-resolution stills and 4K video across Idaho's varied landscapes.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=800&q=80" alt="Idaho farmland aerial view">
+        <div class="portfolio-overlay"><span>Agriculture — Twin Falls</span></div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80" alt="Idaho mountain landscape">
+        <div class="portfolio-overlay"><span>Sawtooth Mountains</span></div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80" alt="Real estate aerial photography">
+        <div class="portfolio-overlay"><span>Real Estate — Boise</span></div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Construction site documentation">
+        <div class="portfolio-overlay"><span>Construction — Nampa</span></div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=600&q=80" alt="Event aerial coverage">
+        <div class="portfolio-overlay"><span>Event Coverage</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <div class="pricing-header">
+      <div class="section-label">Transparent Rates</div>
+      <h2 class="section-title">Simple Pricing,<br>No Surprises</h2>
+      <p class="section-body">All packages include FAA-compliant operations, edited deliverables, and fast turnaround. Custom quotes available for large projects.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Starter</h3>
+        <div class="price"><sup>$</sup>149</div>
+        <p class="price-desc">Per session &middot; Up to 1 hr on site</p>
+        <ul class="pricing-list">
+          <li>10 edited aerial photos</li>
+          <li>1 location / property</li>
+          <li>48-hr delivery</li>
+          <li>Online gallery download</li>
+        </ul>
+        <button class="btn-book" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book This Package</button>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-tag">Most Popular</div>
+        <h3>Pro</h3>
+        <div class="price"><sup>$</sup>299</div>
+        <p class="price-desc">Per session &middot; Up to 2 hrs on site</p>
+        <ul class="pricing-list">
+          <li>25 edited aerial photos</li>
+          <li>1&ndash;2 min edited video</li>
+          <li>2 locations included</li>
+          <li>24-hr delivery</li>
+          <li>Commercial use license</li>
+        </ul>
+        <button class="btn-book light" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book This Package</button>
+      </div>
+      <div class="pricing-card">
+        <h3>Commercial</h3>
+        <div class="price"><sup>$</sup>499<span style="font-size:18px">+</span></div>
+        <p class="price-desc">Full-day &middot; Custom deliverables</p>
+        <ul class="pricing-list">
+          <li>Unlimited photos</li>
+          <li>Full edit video up to 5 min</li>
+          <li>Drone mapping / 3D scan</li>
+          <li>Same-day rush option</li>
+          <li>Dedicated project contact</li>
+        </ul>
+        <button class="btn-book" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Request a Quote</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-visual">
+      <div class="about-img-wrap"></div>
+      <div class="about-cert">
+        <div class="about-cert-label">FAA Certified</div>
+        <div class="about-cert-title">Part 107<br>Remote Pilot</div>
+        <div class="about-cert-sub">Licensed &amp; insured operator</div>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="section-label">About the Operator</div>
+      <h2 class="section-title">Idaho-Based,<br>Idaho Proud</h2>
+      <div class="gear-tag">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2 L14 5 V11 L8 14 L2 11 V5 Z" stroke="#2a1f12" stroke-width="1.2" fill="none"/><circle cx="8" cy="8" r="2" fill="#c4952a"/></svg>
+        DJI Mini 2
+      </div>
+      <p class="section-body" style="margin-bottom: 1.25rem;">I'm a licensed FAA Part 107 remote pilot based right here in Idaho, passionate about capturing the beauty and scale of our state from the air. Whether it's the Snake River Plain at harvest, a new subdivision going up, or the Tetons at golden hour — I bring a professional eye and reliable equipment to every flight.</p>
+      <p class="section-body">Every project is flown with safety-first practices, full regulatory compliance, and a commitment to delivering imagery you'll actually use.</p>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="stat-num">Part 107</div>
+          <div class="stat-label">FAA Certified</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">4K</div>
+          <div class="stat-label">Video Capability</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">48hr</div>
+          <div class="stat-label">Standard Turnaround</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Service Categories</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Ready to Fly?<br>Let's Talk.</h2>
+      <p class="section-body" style="margin-bottom: 0;">Tell us about your project and we'll get back to you with a custom quote &mdash; usually within a few hours.</p>
+      <div class="contact-info" style="margin-top: 2.5rem;">
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#9993;</div>
+          <div class="contact-info-text">
+            <strong>Email</strong>
+            <span>hello@idahoairphotography.com</span>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">&#9679;</div>
+          <div class="contact-info-text">
+            <strong>Based in Idaho</strong>
+            <span>Serving the Treasure Valley &amp; beyond</span>
+          </div>
+        </div>
+      </div>
+      <div class="coverage-area">
+        <h4>Coverage Area</h4>
+        <div class="coverage-tags">
+          <span class="coverage-tag">Boise</span>
+          <span class="coverage-tag">Nampa</span>
+          <span class="coverage-tag">Meridian</span>
+          <span class="coverage-tag">Caldwell</span>
+          <span class="coverage-tag">Twin Falls</span>
+          <span class="coverage-tag">Sun Valley</span>
+          <span class="coverage-tag">Idaho Falls</span>
+          <span class="coverage-tag">Statewide on request</span>
+        </div>
+      </div>
+    </div>
+    <!-- To make this form work, sign up at https://formspree.io and replace YOUR_FORM_ID below -->
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
+        </div>
+        <div class="form-field">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="(208) 555-0000">
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@email.com" required>
+      </div>
+      <div class="form-field">
+        <label for="service">Service Type</label>
+        <select id="service" name="service">
+          <option value="">Select a service...</option>
+          <option>Real Estate</option>
+          <option>Agriculture / Farm</option>
+          <option>Construction Inspection</option>
+          <option>Event / Wedding</option>
+          <option>Commercial</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="message">Location / Details</label>
+        <textarea id="message" name="message" placeholder="Tell us about your project — location, date, what you need..."></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Send Request &rarr;</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; 2025 <strong>Idaho Air Photography</strong> &middot; FAA Part 107 Certified &middot; idahoairphotography.com</p>
+  <p style="margin-top: 6px; font-size: 12px;">Serving Nampa, Boise, Treasure Valley &amp; statewide Idaho</p>
+</footer>
+
+</body>
+</html>
